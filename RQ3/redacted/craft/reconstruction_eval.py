@@ -34,6 +34,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--save-every", type=int, default=10)
     p.add_argument("--log-file", type=Path, default=None)
     p.add_argument("--keep-alive", default="24h")
+    
     return p.parse_args()
 
 def _manifest_hash(records: list[dict]) -> str:

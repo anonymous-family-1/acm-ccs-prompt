@@ -1,4 +1,4 @@
-# CRAFT: Context-Routing Artifact-Faithful Transformations
+# CRAFT
 
 ## Installation
 
@@ -47,18 +47,23 @@ python -m redacted.craft.multi_baseline_eval \
   --host http://localhost:11434
 
 python -m redacted.craft.merge_baseline_eval \
-  results/multi_eval_part1.json \
-  results/multi_eval_part2.json \
-  --output results/multi_eval_merged.json
+    --inputs \
+    results/multi_eval_part1.json \
+    results/multi_eval_part2.json \
+    --output results/multi_eval_merged.json
+
 ```
 
 ### Adversarial reconstruction (requires Ollama + any instruction model)
 
 ```bash
+export OLLAMA_HOST=http://localhost:11434
+```
+
+```bash
 python -m redacted.craft.reconstruction_eval \
-  --manifest data/spar_pp_task_test_1000_manifest.json \
-  --output results/recon_eval.json \
-  --attack-model gpt-oss:20b \
-  --host http://localhost:11434 \
-  --resume --save-every 10
+    --manifest data/spar_pp_task_test_1000_manifest.json \
+    --output results/recon_eval.json \
+    --attack-model gpt-oss:20b \
+    --resume --save-every 10
 ```

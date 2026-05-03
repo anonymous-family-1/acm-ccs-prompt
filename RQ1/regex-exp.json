@@ -1,0 +1,419 @@
+{
+  "name": "regex-exp",
+  "patterns": [
+    {
+      "name": "api_key_openai",
+      "tier": 1,
+      "description": "OpenAI API key",
+      "notes": "Old format: sk-[48 chars], New format: sk-proj-[N chars], Service acct: sk-svcacct-[N chars]",
+      "source": "https://platform.openai.com/docs/api-reference/authentication",
+      "pattern": "sk-(proj-|svcacct-)?[A-Za-z0-9]{20,}",
+      "flags": []
+    },
+    {
+      "name": "github_token",
+      "tier": 1,
+      "description": "GitHub token",
+      "notes": "ghp_=personal, gho_=OAuth, ghu_=user-to-server, ghs_=server-to-server, ghr_=refresh",
+      "source": "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github",
+      "pattern": "gh[pousr]_[A-Za-z0-9]{36,}",
+      "flags": []
+    },
+    {
+      "name": "github_pat_token",
+      "tier": 1,
+      "description": "GitHub fine-grained personal access token",
+      "notes": "",
+      "source": "",
+      "pattern": "github_pat_[A-Za-z0-9_]{82}",
+      "flags": []
+    },
+    {
+      "name": "jwt_token",
+      "tier": 1,
+      "description": "JWT token",
+      "notes": "RFC 7519 (base64url-encoded JSON header always starts with eyJ)",
+      "source": "RFC 7519",
+      "pattern": "eyJ[A-Za-z0-9\\-_]+\\.[A-Za-z0-9\\-_]+\\.[A-Za-z0-9\\-_]+",
+      "flags": []
+    },
+    {
+      "name": "slack_token",
+      "tier": 1,
+      "description": "Slack token",
+      "notes": "xoxb=bot, xoxa=legacy app, xoxp=user, xoxr=refresh, xoxs=workspace",
+      "source": "https://api.slack.com/authentication/token-types",
+      "pattern": "xox[baprs]-[A-Za-z0-9\\-]{10,}",
+      "flags": []
+    },
+    {
+      "name": "slack_webhook",
+      "tier": 1,
+      "description": "Slack incoming webhook URL",
+      "notes": "",
+      "source": "",
+      "pattern": "https://hooks\\.slack\\.com/services/T[A-Z0-9]{8,}/B[A-Z0-9]{8,}/[A-Za-z0-9]{24,}",
+      "flags": ["IGNORECASE"]
+    },
+    {
+      "name": "stripe_key",
+      "tier": 1,
+      "description": "Stripe API key",
+      "notes": "",
+      "source": "https://stripe.com/docs/keys",
+      "pattern": "(sk|pk)_(test|live)_[A-Za-z0-9]{24,}",
+      "flags": []
+    },
+    {
+      "name": "twilio_sid",
+      "tier": 1,
+      "description": "Twilio Account SID",
+      "notes": "Account SID: AC + 32 hex chars (uppercase)",
+      "source": "https://www.twilio.com/docs/iam/credentials/api",
+      "pattern": "AC[A-F0-9]{32}",
+      "flags": []
+    },
+    {
+      "name": "sendgrid_key",
+      "tier": 1,
+      "description": "SendGrid API key",
+      "notes": "",
+      "source": "https://docs.sendgrid.com/ui/account-and-settings/api-keys",
+      "pattern": "SG\\.[A-Za-z0-9\\-_]{22,}\\.[A-Za-z0-9\\-_]{43,}",
+      "flags": []
+    },
+    {
+      "name": "mailgun_api_key",
+      "tier": 1,
+      "description": "Mailgun API key",
+      "notes": "API key format used by Mailgun",
+      "source": "",
+      "pattern": "key-[A-Za-z0-9]{32}",
+      "flags": []
+    },
+    {
+      "name": "google_api_key",
+      "tier": 1,
+      "description": "Google API key",
+      "notes": "",
+      "source": "https://cloud.google.com/docs/authentication/api-keys",
+      "pattern": "AIza[0-9A-Za-z\\-_]{35}",
+      "flags": []
+    },
+    {
+      "name": "firebase_url",
+      "tier": 1,
+      "description": "Firebase Realtime Database URL",
+      "notes": "",
+      "source": "https://firebase.google.com/docs/database/rest/start",
+      "pattern": "https://[a-z0-9\\-]+\\.firebaseio\\.com",
+      "flags": ["IGNORECASE"]
+    },
+    {
+      "name": "telegram_bot_token",
+      "tier": 1,
+      "description": "Telegram bot token",
+      "notes": "",
+      "source": "https://core.telegram.org/bots/api#authorizing-your-bot",
+      "pattern": "\\d{8,10}:[A-Za-z0-9\\-_]{35}",
+      "flags": []
+    },
+    {
+      "name": "discord_token",
+      "tier": 1,
+      "description": "Discord token",
+      "notes": "",
+      "source": "https://discord.com/developers/docs/reference#authentication",
+      "pattern": "[MN][A-Za-z0-9]{23}\\.[A-Za-z0-9\\-_]{6}\\.[A-Za-z0-9\\-_]{27}",
+      "flags": []
+    },
+    {
+      "name": "discord_webhook",
+      "tier": 1,
+      "description": "Discord webhook URL",
+      "notes": "",
+      "source": "https://discord.com/developers/docs/reference#authentication",
+      "pattern": "https://discord(app)?\\.com/api/webhooks/\\d+/[A-Za-z0-9\\-_]+",
+      "flags": ["IGNORECASE"]
+    },
+    {
+      "name": "npm_token",
+      "tier": 1,
+      "description": "npm access token",
+      "notes": "",
+      "source": "https://docs.npmjs.com/about-access-tokens",
+      "pattern": "npm_[A-Za-z0-9]{36}",
+      "flags": []
+    },
+    {
+      "name": "digitalocean_token",
+      "tier": 1,
+      "description": "DigitalOcean personal access token",
+      "notes": "",
+      "source": "https://docs.digitalocean.com/reference/api/create-personal-access-token/",
+      "pattern": "dop_v1_[a-f0-9]{64}",
+      "flags": []
+    },
+    {
+      "name": "shopify_token",
+      "tier": 1,
+      "description": "Shopify access token",
+      "notes": "",
+      "source": "https://shopify.dev/docs/apps/build/authentication-authorization/access-tokens",
+      "pattern": "shpat_[a-fA-F0-9]{32}",
+      "flags": []
+    },
+    {
+      "name": "gitlab_token",
+      "tier": 1,
+      "description": "GitLab personal access token",
+      "notes": "",
+      "source": "https://docs.gitlab.com/ee/security/token_overview.html",
+      "pattern": "glpat-[A-Za-z0-9\\-_]{20}",
+      "flags": []
+    },
+    {
+      "name": "mapbox_token",
+      "tier": 1,
+      "description": "Mapbox token",
+      "notes": "pk.eyJ1 is base64url({\"u\": ...) — documented public token prefix",
+      "source": "https://docs.mapbox.com/api/overview/#access-tokens-and-token-scopes",
+      "pattern": "pk\\.eyJ1[A-Za-z0-9\\-_\\.]+",
+      "flags": []
+    },
+    {
+      "name": "aws_access_key",
+      "tier": 1,
+      "description": "AWS access key ID",
+      "notes": "Access Key ID: AKIA + 16 uppercase alphanumeric (exact length documented)",
+      "source": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html",
+      "pattern": "AKIA[0-9A-Z]{16}",
+      "flags": []
+    },
+    {
+      "name": "gcp_credentials",
+      "tier": 1,
+      "description": "GCP service account JSON marker",
+      "notes": "",
+      "source": "https://cloud.google.com/iam/docs/creating-managing-service-accounts",
+      "pattern": "\"type\"\\s*:\\s*\"service_account\"",
+      "flags": ["IGNORECASE"]
+    },
+    {
+      "name": "azure_connection",
+      "tier": 1,
+      "description": "Azure Storage connection string",
+      "notes": "",
+      "source": "https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string",
+      "pattern": "DefaultEndpointsProtocol=https;AccountName=[^;]+;AccountKey=[A-Za-z0-9+/=]+",
+      "flags": ["IGNORECASE"]
+    },
+    {
+      "name": "private_key_header",
+      "tier": 2,
+      "description": "Private key header",
+      "notes": "PKCS#8 (RFC 5958), SEC 1 (RFC 5915), OpenSSH",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "-----BEGIN (RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----",
+      "flags": []
+    },
+    {
+      "name": "ssh_public_key",
+      "tier": 2,
+      "description": "SSH public key",
+      "notes": "SSH public key in prompt = infrastructure exposure",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "ssh-(rsa|dss|ed25519|ecdsa)\\s+[A-Za-z0-9+/=]{100,}",
+      "flags": []
+    },
+    {
+      "name": "certificate",
+      "tier": 2,
+      "description": "X.509 certificate header",
+      "notes": "",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "-----BEGIN CERTIFICATE-----",
+      "flags": []
+    },
+    {
+      "name": "url_with_credentials",
+      "tier": 2,
+      "description": "URL with embedded credentials",
+      "notes": "RFC 3986 userinfo",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "https?://[^:@\\s]+:[^@\\s]{4,}@[^\\s]+",
+      "flags": ["IGNORECASE"]
+    },
+    {
+      "name": "db_connection_string",
+      "tier": 2,
+      "description": "Database connection URI",
+      "notes": "Standard driver URI schemes",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "(mongodb(\\+srv)?|postgres(ql)?|mysql|redis|mssql|sqlite|oracle):\\/\\/[^\\s\"'<>]+",
+      "flags": ["IGNORECASE"]
+    },
+    {
+      "name": "jdbc_url",
+      "tier": 2,
+      "description": "JDBC URL",
+      "notes": "Standard Java database connectivity",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "jdbc:[a-z]+://[^\\s\"']+",
+      "flags": ["IGNORECASE"]
+    },
+    {
+      "name": "connection_string_kv",
+      "tier": 2,
+      "description": "ADO.NET / SQL Server connection string",
+      "notes": "",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "(Server|Data Source)\\s*=\\s*[^;]+;\\s*(Database|Initial Catalog)\\s*=\\s*[^;]+",
+      "flags": ["IGNORECASE"]
+    },
+    {
+      "name": "internal_ip",
+      "tier": 2,
+      "description": "RFC 1918 private IP address",
+      "notes": "",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "\\b(10\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|172\\.(1[6-9]|2\\d|3[01])\\.\\d{1,3}\\.\\d{1,3}|192\\.168\\.\\d{1,3}\\.\\d{1,3})\\b",
+      "flags": []
+    },
+    {
+      "name": "docker_registry",
+      "tier": 2,
+      "description": "Cloud container registry reference",
+      "notes": "Azure ACR, AWS ECR, GCP GCR",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "[a-z0-9\\-\\.]+\\.(azurecr\\.io|ecr\\.[a-z0-9\\-]+\\.amazonaws\\.com|gcr\\.io)/[^\\s\"']+",
+      "flags": ["IGNORECASE"]
+    },
+    {
+      "name": "kubernetes_secret",
+      "tier": 2,
+      "description": "Kubernetes Secret manifest",
+      "notes": "",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "kind:\\s*Secret",
+      "flags": ["IGNORECASE"]
+    },
+    {
+      "name": "stack_trace",
+      "tier": 2,
+      "description": "Python or Java stack trace",
+      "notes": "Internal path disclosure",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "(Traceback \\(most recent call last\\)|at [a-zA-Z\\.]+\\([A-Za-z]+\\.java:\\d+\\)|File \"[^\"]+\", line \\d+)",
+      "flags": []
+    },
+    {
+      "name": "unix_path",
+      "tier": 2,
+      "description": "Internal Unix filesystem path",
+      "notes": "",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "(/home/[^\\s/]+|/var/www|/etc/[^\\s]+|/usr/local/[^\\s]+)",
+      "flags": []
+    },
+    {
+      "name": "windows_path",
+      "tier": 2,
+      "description": "Internal Windows filesystem path",
+      "notes": "",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "[A-Za-z]:\\\\[^\\s\"'<>]{5,}",
+      "flags": []
+    },
+    {
+      "name": "docker_compose_secret",
+      "tier": 2,
+      "description": "Docker Compose secret environment variable",
+      "notes": "Well-known secret env vars from official image documentation",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "(MYSQL_ROOT_PASSWORD|POSTGRES_PASSWORD|MONGO_INITDB_ROOT_PASSWORD)\\s*[:=]\\s*\\S+",
+      "flags": []
+    },
+    {
+      "name": "ansible_vault",
+      "tier": 2,
+      "description": "Ansible Vault header",
+      "notes": "Encrypted file header",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "\\$ANSIBLE_VAULT;\\d+\\.\\d+",
+      "flags": []
+    },
+    {
+      "name": "email_address",
+      "tier": 2,
+      "description": "Email address",
+      "notes": "RFC 5322 (validated via manual annotation for FP rate)",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}",
+      "flags": []
+    },
+    {
+      "name": "credit_card",
+      "tier": 2,
+      "description": "Credit card number",
+      "notes": "Visa/MC/Amex BIN patterns (validated via manual annotation)",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "\\b(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})\\b",
+      "flags": []
+    },
+    {
+      "name": "iban",
+      "tier": 2,
+      "description": "IBAN",
+      "notes": "ISO 13616",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "\\b[A-Z]{2}\\d{2}[A-Z0-9]{4}\\d{7}([A-Z0-9]?){0,16}\\b",
+      "flags": []
+    },
+    {
+      "name": "wallet_address_eth",
+      "tier": 2,
+      "description": "Ethereum wallet address",
+      "notes": "EIP-55",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "\\b0x[a-fA-F0-9]{40}\\b",
+      "flags": []
+    },
+    {
+      "name": "crypto_private_key",
+      "tier": 2,
+      "description": "Bitcoin private key",
+      "notes": "WIF format (Base58Check, starts with 5/K/L)",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "\\b[5KL][1-9A-HJ-NP-Za-km-z]{50,51}\\b",
+      "flags": []
+    },
+    {
+      "name": "commented_credential",
+      "tier": 2,
+      "description": "Commented-out credential",
+      "notes": "Common developer mistake",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "(#|//|/\\*)\\s*(password|api.?key|secret|token)\\s*[:=]\\s*\\S{4,}",
+      "flags": ["IGNORECASE"]
+    },
+    {
+      "name": "proprietary_endpoint",
+      "tier": 2,
+      "description": "Internal service endpoint",
+      "notes": "Private TLD",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "https?://[a-z0-9\\-]+\\.(internal|private|local|corp|lan)(:\\d+)?(/[^\\s]*)?",
+      "flags": ["IGNORECASE"]
+    },
+    {
+      "name": "ci_secret_var",
+      "tier": 2,
+      "description": "CI/CD secret variable assignment",
+      "notes": "",
+      "source": "https://github.com/trufflesecurity/trufflehog ; https://github.com/gitleaks/gitleaks",
+      "pattern": "(TRAVIS|CIRCLE|JENKINS|GITHUB_ACTIONS|GITLAB_CI)[_\\-]?(TOKEN|SECRET|KEY|PASSWORD)\\s*[:=]\\s*\\S+",
+      "flags": ["IGNORECASE"]
+    }
+  ]
+}

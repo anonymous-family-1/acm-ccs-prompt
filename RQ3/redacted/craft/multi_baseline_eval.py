@@ -57,6 +57,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--save-every", type=int, default=10)
     p.add_argument("--log-file", type=Path, default=None)
     p.add_argument("--keep-alive", default="24h")
+    p.add_argument("--host", default="http://localhost:11434")
     return p.parse_args()
 
 def _ollama(model: str, system: str, prompt: str, host: str, keep_alive: str, timeout: int = 300) -> str:
@@ -208,7 +209,7 @@ def _build_payload(args, mhash: str, rows: list[dict]) -> dict:
 
 def main() -> None:
     args = parse_args()
-    host = os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434")
+    host = args.host
 
     manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
     records = manifest["records"]
